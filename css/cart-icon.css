@@ -1,0 +1,23 @@
+.cart-icon {
+    height: 37px;
+    width: 43px;
+    display: flex;
+    position: relative;
+    right: 5px;
+    border: none;
+    top: 3px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #C8A2C8;
+    cursor: pointer;
+}
+
+.add-cart {
+    position: absolute;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    width: 64px;
+    z-index: 1;
+}
