@@ -1,62 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts/main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | MyCatShop </title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
-    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css">
-    <link rel="stylesheet" href="css/search-icon.css">
-    <link rel="stylesheet" href="css/cart-icon.css">
-    <link rel="stylesheet" href="css/navbar.css">
-
-    <style>
-    a {
-        color: black;
-    }
-
-    a:hover {
-        color: inherit;
-    }
-    </style>
-</head>
-
-<body>
-
-    <nav class="navbar navbar-expand-lg sticky-top" style="background-color:#C8A2C8;
-    height: 80px;z-index: 1;top: 0;">
-        <div class="container">
-            <a class="navbar-brand" href="index.php" style="color: white;font-size: 28px;">MyCatShop</a>
-            <div class="d-flex justify-content-center h-100" style="width: 450px;">
-                <div class="search">
-                    <input type="text" style="width: 450px;" class="search-input" placeholder="Cari barang"
-                        name="search">
-                    <button class="search-icon">
-                        <div href="#"> <i class="fa fa-search" style="position: relative;top: 2px;"></i> </div>
-                    </button>
-                </div>
-            </div>
-            <div class="d-flex">
-                <a class="cart-icon">
-                    <div href="#"> <i class='bx bx-cart bx-sm' style="color: white;"></i> </div>
-                </a>
-            </div>
-            <form class="d-flex">
-                <a href="profile.php" name="btnprofil" class="btn-google">
-                    <i class='bx bxl-google bx-sm' style="position: relative;top: 2px;"></i>
-                    <div class="label-google">Masuk dengan Google
-                    </div>
-                </a>
-            </form>
-        </div>
-    </nav>
-
-    <!--Container Start-->
-    <div class="container">
+@section('container-isi')
+     <!--Container Start-->
+     <div class="container">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner mb-5" style="margin-top: 30px;">
                 <div class="carousel-item active">
@@ -85,7 +31,7 @@
                     </div>
                 </div>
             </a>
-            <a href="dry-food-category.php" class="col">
+            <a href="/dry-food-category" class="col">
                 <div class="card">
                     <img src="img/kategoriDryFood.svg" style="width: 200px;" class="card-img-top mb-3" alt="...">
                     <div class="card-body">
@@ -168,6 +114,6 @@
         </div>
         <!--Container End-->
     </div>
-</body>
 
-</html>
+@endsection
+   

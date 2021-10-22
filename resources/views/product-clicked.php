@@ -17,7 +17,7 @@
 
     <style>
     body {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Poppins', sans-serif;
     }
 
     .input-group-addon {
@@ -51,6 +51,40 @@
     }
     </style>
 
+    <!-- Start of Async Drift Code -->
+    <script>
+    "use strict";
+
+    ! function() {
+        var t = window.driftt = window.drift = window.driftt || [];
+        if (!t.init) {
+            if (t.invoked) return void(window.console && console.error && console.error(
+                "Drift snippet included twice."));
+            t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page",
+                    "hide", "off", "on"
+                ],
+                t.factory = function(e) {
+                    return function() {
+                        var n = Array.prototype.slice.call(arguments);
+                        return n.unshift(e), t.push(n), t;
+                    };
+                }, t.methods.forEach(function(e) {
+                    t[e] = t.factory(e);
+                }), t.load = function(t) {
+                    var e = 3e5,
+                        n = Math.ceil(new Date() / e) * e,
+                        o = document.createElement("script");
+                    o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src =
+                        "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                    var i = document.getElementsByTagName("script")[0];
+                    i.parentNode.insertBefore(o, i);
+                };
+        }
+    }();
+    drift.SNIPPET_VERSION = '0.3.1';
+    drift.load('kmeys6u4ivwt');
+    </script>
+    <!-- End of Async Drift Code -->
 
 </head>
 
@@ -70,17 +104,15 @@
             </div>
             <div class="d-flex">
                 <a class="cart-icon">
-                    <div href="#"> <i class='bx bx-cart bx-sm' style="color: white;"></i> </div>
+                    <div href="#"> <i class='bx bx-cart bx-md' style="color: white;"></i> </div>
                 </a>
             </div>
-            <form class="d-flex">
-                <a href="profile.php" class="btn-google">
-                    <i class='bx bxl-google bx-sm' style="position: relative;top: 2px;"></i>
-                    <div class="label-google">Masuk dengan Google
-                    </div>
-                </a>
-
-            </form>
+            <div class="d-flex">
+                <a href="#" type="button" class="btn " style="background-color:#A55FA5;
+                color:white;font-weight:bold;
+                padding:10px 20px">
+                    <i class='bx bx-user bx-sm' arial-hidden="true" style="margin-right:10px"></i>Akun Saya</a>
+            </div>
         </div>
     </nav>
 
