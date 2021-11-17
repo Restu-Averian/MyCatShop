@@ -2,7 +2,7 @@
 
 @section('container-isi')
      <!--Container Start-->
-     <div class="container">
+    <div class="container">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner mb-5" style="margin-top: 30px;">
                 <div class="carousel-item active">
@@ -14,106 +14,63 @@
         <div class="mb-4 font-weight-bold" style="font-size: 30px;">
             Kategori
         </div>
+        <hr>
         <div class="row row-cols-1 row-cols-md-5 g-4" style="margin-bottom: 30px;">
-            <a href="#" class="col">
-                <div class="card">
-                    <img src="img/kategoriKucing.svg" style="width: 200px;" class="card-img-top mb-3" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title font-weight-bold text-md-center">Anak Kucing</h5>
+            @foreach ($categories as $cat)    
+                <a href="#" class="col">
+                    <div class="card">
+                        <img src="{{ asset('storage/' . $cat->image) }}" style="width: 200px;" class="card-img-top mb-3" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold text-md-center">{{ $cat->kategori }}</h5>
+                            </div>
                     </div>
-                </div>
-            </a>
-            <a href="#" class="col">
-                <div class="card">
-                    <img src="img/kategoriWetFood.svg" style="width: 200px;" class="card-img-top mb-3" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title font-weight-bold text-md-center">Wet Food</h5>
-                    </div>
-                </div>
-            </a>
-            <a href="/dry-food-category" class="col">
-                <div class="card">
-                    <img src="img/kategoriDryFood.svg" style="width: 200px;" class="card-img-top mb-3" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title font-weight-bold text-md-center">Dry Food</h5>
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="col">
-                <div class="card">
-                    <img src="img/kategoriMainan.svg" style="width: 200px;" class="card-img-top mb-3" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title font-weight-bold text-md-center">Cat Toys</h5>
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="col">
-                <div class="card">
-                    <img src="img/kategoriPerlengkapan.svg" style="width: 200px;" class="card-img-top mb-3" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title font-weight-bold text-md-center">Perlengkapan Pasir</h5>
-                    </div>
-                </div>
-            </a>
+                </a>
+            @endforeach
         </div>
-
+        
         <div class="mb-4 font-weight-bold" style="font-size: 30px;">
-            Top Recommended
+                Top Recommended
         </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-bottom: 30px;">
-            <div class="kotak" style="position: relative;">
-                <a href="#" class="add-cart">
-                    <img src="icon/btnAddChart.svg" class="add-cart">
-                </a>
-                <a href="product-clicked.php" class="col" style="position: absolute;">
-                    <div class=" card">
-                        <img src="img/produk1.svg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 id="nm-produk" class="mb-lg-3">CAT CHOIZE KITTEN Cat Food 1 kg -
-                                Makanan Anak Kucing</h5>
-                            <span><i class="fas fa-heart mb-3" style="color: red;"></i>11</span>
-                            <h2>Rp 28.000</h2>
-                        </div>
+        <hr>
+        <div class="row row-cols-1 row-cols-md-3  g-4 mb-3" style="margin-bottom: 30px;">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/produk1.svg" class="card-img-top" alt="Gambar Produk">
+                    <div class="card-body">
+                        <div class="border rounded text-center" style="width: 30%; margin-bottom: 10px;color: #C8A2C8;" >Dry Food</div>
+                            <h4 class="card-title">CAT CHOIZE KITTEN Cat Food 1 kg - 
+                                    Makanan Anak Kucing</h4>
+                            <h2 class="card-text" style="color: #A55FA5">Rp 28000</h2>
                     </div>
-                </a>
+                </div>    
             </div>
-
-            <div class="kotak" style="position: relative;">
-                <a href="#" class="add-cart">
-                    <img src="icon/btnAddChart.svg" class="add-cart">
-                </a>
-                <a href="product-clicked.php" class="col" style="position: absolute;">
-                    <div class=" card">
-                        <img src="img/profelin.svg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 id="nm-produk" class="mb-lg-3">Profelin Wet Food Tuna Red Meat in
-                                Jelly 400 g</h5>
-                            <span><i class="fas fa-heart mb-3" style="color: red;"></i>11</span>
-                            <h2>Rp 28.000</h2>
-                        </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/produk1.svg" class="card-img-top" alt="Gambar Produk">
+                    <div class="card-body">
+                        <div class="border rounded text-center" style="width: 30%; margin-bottom: 10px;color: #C8A2C8;" >Dry Food</div>
+                            <h4 class="card-title">CAT CHOIZE KITTEN Cat Food 1 kg - 
+                                    Makanan Anak Kucing</h4>
+                            <h2 class="card-text" style="color: #A55FA5">Rp 28000</h2>
                     </div>
-                </a>
+                </div>    
             </div>
-
-            <div class="kotak" style="position: relative;">
-                <a href="#" class="add-cart">
-                    <img src="icon/btnAddChart.svg" class="add-cart">
-                </a>
-                <a href="product-clicked.php" class="col" style="position: absolute;">
-                    <div class=" card">
-                        <img src="img/pawsitive.svg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 id="nm-produk" class="mb-lg-3">Pawsitive Lemon Pasir Gumpal
-                                Kucing [25 L]</h5>
-                            <span><i class="fas fa-heart mb-3" style="color: red;"></i>11</span>
-                            <h2>Rp 28.000</h2>
-                        </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/produk1.svg" class="card-img-top" alt="Gambar Produk">
+                    <div class="card-body">
+                        <div class="border rounded text-center" style="width: 30%; margin-bottom: 10px;color: #C8A2C8;" >Dry Food</div>
+                            <h4 class="card-title">CAT CHOIZE KITTEN Cat Food 1 kg - 
+                                    Makanan Anak Kucing</h4>
+                            <h2 class="card-text" style="color: #A55FA5">Rp 28000</h2>
                     </div>
-                </a>
+                </div>    
             </div>
-        </div>
-        <!--Container End-->
+            
+        </div>     
     </div>
+        <!--Container End-->
+    
 
 @endsection
    

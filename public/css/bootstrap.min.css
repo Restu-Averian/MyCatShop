@@ -657,7 +657,8 @@ pre code {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin-right: -15px;
-    margin-left: -15px
+    margin-left: -15px;
+
 }
 
 .no-gutters {
@@ -7474,7 +7475,7 @@ button.bg-dark:hover {
 }
 
 .border-primary {
-    border-color: #007bff !important
+    border-color: #578bc4 !important
 }
 
 .border-secondary {
