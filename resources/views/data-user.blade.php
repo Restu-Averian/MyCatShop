@@ -33,7 +33,7 @@
                     <div class="modal-body">
                       <div class="row">
                         <div class="col-md-6">
-                            <img src="storage/{{ $u->image }}" alt="">
+                            <img src="storage/{{ $u->image }}" alt="" class="m-auto">
                         </div>
                         <div class="col-md-6">
                             <p><b>Nama </b> : {{ $u->name }}</p>
