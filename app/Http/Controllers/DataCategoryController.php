@@ -10,11 +10,22 @@ class DataCategoryController extends Controller
 {
     public function index() //show tabel kategori
     {
-        $categories = new Categories();
-        $categories = DB::table('categories')->get();
-        return view('data-category', [
-            'categories' => $categories,
-            'title' => 'Data Kategori'
+        $products = DB::table('products')->get();
+        $CountKucing = DB::table('products')->where('kategori', '=', 'Kucing')->count();
+        $CountWetFood = DB::table('products')->where('kategori', '=', 'Wet Food')->count();
+        $CountDryFood = DB::table('products')->where('kategori', '=', 'Dry Food')->count();
+        $CountCatToys = DB::table('products')->where('kategori', '=', 'Cat Toys')->count();
+        $CountPerlengkapan = DB::table('products')->where('kategori', '=', 'Perlengkapan Pasir')->count();
+        $CountObat = DB::table('products')->where('kategori', '=', 'Obat Kucing')->count();
+        return view('/admin/data-category', [
+            'title' => 'Data Kategori',
+            'products' => $products,
+            'CountKucing' => $CountKucing,
+            'CountWetFood' => $CountWetFood,
+            'CountDryFood' => $CountDryFood,
+            'CountCatToys' => $CountCatToys,
+            'CountPerlengkapan' => $CountPerlengkapan,
+            'CountObat' => $CountObat
         ]);
     }
     public function delete($id)

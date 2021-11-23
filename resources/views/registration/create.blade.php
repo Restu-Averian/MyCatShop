@@ -41,7 +41,7 @@
 
           <div class="mb-4">
               <label for="password-reg" class="form-label">Password</label>
-              <input type="password" id="password" name="password" class="form-control"
+              <input type="password" id="password"  minlength="8" name="password" class="form-control"
                   placeholder="Password" required>
 
               <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-2">Minimal 8 characters
@@ -64,9 +64,28 @@
 
           <div class="mb-4">
             <label for="image" class="form-label">Upload foto</label>
-            <input type="file" class="form-control" name="image" id="image" required>
+            <input type="file" class="form-control" onchange="previewImage()" name="image" id="image" required>
+            
+            <small for="" class="text-muted mt-lg-4">Preview</small>
+            <img src="" class="img-preview" alt="" width="30%">
+            <script>
+                function previewImage(){
+                    const image= document.querySelector('#image');
+                    const imgPreview = document.querySelector('.img-preview');
+                    imgPreview.style.display='block';
+        
+                    const oFreader = new FileReader();
+                    oFreader.readAsDataURL(image.files[0]);
+        
+                    oFreader.onload=function(oFREvent){
+                        imgPreview.src =oFREvent.target.result;
+                    }
+                }
+            </script>
+        
           </div>
-          <input class="btn btn-info btn-block my-4" name="daftar" style="background-color: #A55FA5;font-weight: 600" type="submit" value="Daftar">
+          <input class="btn btn-info btn-block my-4" name="daftar"  style="background-color: #A55FA5;font-weight: 600" type="submit" value="Daftar">
+          
           @if(count($errors))
           <div class="form-group">
               <div class="alert alert-danger">
@@ -78,6 +97,8 @@
               </div>
           </div>
       @endif
+
+      
           <p>Dengan menekan
               <em>Daftar</em> maka kamu setuju akan
               <a href="" target="_blank" style="color: #A55FA5;font-weight: 600">Syarat Penggunaan</a>

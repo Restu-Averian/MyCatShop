@@ -17,7 +17,10 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('kategori');
             $table->string('productname')->unique();
-            $table->string('harga');
+            $table->double('harga');
+            $table->integer('kuantitas');
+            $table->string('deskripsi');
+            $table->string('ulasan')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

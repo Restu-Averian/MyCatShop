@@ -11,8 +11,9 @@ class DataProductController extends Controller
     public function index()
     {
         $products = DB::table('products')->get();
+        $products = Products::paginate(10);
         return view(
-            '/data-product',
+            '/admin/data-product',
             [
                 'product' => $products,
                 'title' => 'Data Product'

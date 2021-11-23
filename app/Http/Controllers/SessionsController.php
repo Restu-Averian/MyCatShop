@@ -21,6 +21,10 @@ class SessionsController extends Controller
             ]);
         }
 
+        //Kalau admin
+        if (Auth::user() &&  Auth::user()->isAdmin == true) {
+            return redirect()->to('/dashboard');
+        }
         return redirect()->to('/profile');
     }
     public function destroy()

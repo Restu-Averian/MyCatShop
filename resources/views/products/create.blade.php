@@ -1,7 +1,100 @@
-@extends('layouts/main')
+@extends('layouts/adminmain')
 
-@section('container-isi')
+@section('container-admin')
 <div class="input-group mt-5 justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <a href="/data-product" class="icon-back" ><i class='bx bx-arrow-back bx-md justify-content-center'></i></a>
+                        <p class="h2 mb-5 font-weight-bold text-center">Tambahkan Produk</p>
+                        <form class=" pb-5 col-sm-6 m-auto" action="/addproduct" method="POST" enctype="multipart/form-data">
+                            {{-- @csrf --}}
+                          {{ csrf_field() }}
+                          @if ($message = Session::get('success'))
+                            <p class="alert alert-success text-white">{{ $message }}</p>
+                          @endif
+                                <label for="nama" class="ml-auto">Nama Produk</label>
+                                <style>
+                                #inpnama:focus {
+                                    border-color: #A55FA5;
+                                    outline: none;
+                    
+                                }
+                                </style>
+                                <input type="nama" id="inpnama" name="productname" class="form-control mb-4 border p-2" value="{{ old('productname') }}" required>
+                    
+                            
+                                <label for="kategori" class="ml-auto">Kategori</label>
+                                <div >
+                                    <Select class="form-select p-2" name="kategori" required>
+                                        {{-- @foreach ($categories as $kategori)
+                                            <option value="{{ $kategori->kategori }}">{{ $kategori->kategori }}</option>
+                                        @endforeach --}}
+                                            <option value="Kucing" style="background-color: white;color: rgb(43, 43, 43)">Kucing</option>
+                                            <option value="Wet Food" style="background-color: white;color: rgb(43, 43, 43)">Wet Food</option>
+                                            <option value="Dry Food" style="background-color: white;color: rgb(43, 43, 43)">Dry Food</option>
+                                            <option value="Cat Toys" style="background-color: white;color: rgb(43, 43, 43)">Cat Toys</option>
+                                            <option value="Perlengkapan Pasir" style="background-color: white;color: rgb(43, 43, 43)">Perlengkapan Pasir</option>
+                                            <option value="Obat Kucing" style="background-color: white;color: rgb(43, 43, 43)">Obat Kucing</option>
+                                    </Select>
+                                </div>
+                            
+                                <label for="harga" class="ml-auto mt-4" >Harga Per Satuan</label>
+                                <div class="d-flex align-items-baseline">
+                                    <small class="pr-3">Rp </small><input type="number" id="harga" name="harga" class="form-control border p-2 d-inline"   required>
+                                </div>
+                            
+                                <label for="kuantitas" class="ml-auto mt-4" >Kuantitas</label>
+                                <div class="d-flex align-items-baseline">
+                                    <input type="number" id="kuantitas" name="kuantitas" class="form-control border p-2 "   required>
+                                </div>
+                                
+                                <label for="deskripsi" class="ml-auto mt-4" >Deskripsi</label>
+                                <div class="d-flex align-items-baseline">
+                                    <textarea id="deskripsi" name="deskripsi" class="form-control mb-4 border p-2 "  required> </textarea>
+                                </div>
+
+                                <label for="image" class="ml-auto">Gambar Produk</label>
+                                <input class="form-control border mb-2 p-2 @error ('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+                                <small for="image" class="text-small text-muted ml-auto">Preview</small>
+                                <img width="90%" class="img-preview">
+                                <div class="mt-lg-5 w-50 m-auto">
+                                <input class="btn btn-info btn-block" name="tambah" style="background-color: #A55FA5;font-weight: 600" type="submit" value="Tambah Produk">
+                            </div>
+                            @if(count($errors))
+                            <div class="form-group">
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
+                        <script>
+                            function previewImage(){
+                                const image= document.querySelector('#image');
+                                const imgPreview = document.querySelector('.img-preview');
+                                imgPreview.style.display='block';
+
+                                const oFreader = new FileReader();
+                                oFreader.readAsDataURL(image.files[0]);
+
+                                oFreader.onload=function(oFREvent){
+                                    imgPreview.src =oFREvent.target.result;
+                                }
+                            }
+                        </script>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
     <style>
         .icon-back {   
             height: 40px;
@@ -15,62 +108,6 @@
         }
     </style>
     <!--Daftar Akun-->
-    <a href="/data-product" class="icon-back" ><i class='bx bx-arrow-back bx-md justify-content-center'></i></a>
-    <form class="border p-5 col-sm-6 ml-lg-5" action="/addproduct" method="POST" enctype="multipart/form-data">
-      {{-- @csrf --}}
-      {{ csrf_field() }}
-        <p class="h2 mb-5 font-weight-bold text-center">Tambahkan Produk</p>
-
-        <div class="mb-4">
-            <label for="nama" class="form-label">Nama Produk</label>
-            <style>
-            #inpnama:focus {
-                border-color: #A55FA5;
-                outline: none;
-
-            }
-            </style>
-            <input type="nama" id="inpnama" name="productname" class="form-control mb-4" placeholder="Masukkan Nama Produk" value="{{ old('productname') }}" required>
-        </div>
-
-        <div class="mb-4">
-            <label for="kategori" class="form-label">Kategori</label>
-            <div >
-                <Select class="form-select" name="kategori" required>
-                    @foreach ($categories as $kategori)
-                        <option value="{{ $kategori->kategori }}">{{ $kategori->kategori }}</option>
-                    @endforeach
-                        {{-- <option value="Kucing" style="background-color: white;color: rgb(43, 43, 43)">Kucing</option>
-                        <option value="Wet Food" style="background-color: white;color: rgb(43, 43, 43)">Wet Food</option>
-                        <option value="Dry Food" style="background-color: white;color: rgb(43, 43, 43)">Dry Food</option>
-                        <option value="Cat Toys" style="background-color: white;color: rgb(43, 43, 43)">Cat Toys</option>
-                        <option value="Perlengkapan Kucing" style="background-color: white;color: rgb(43, 43, 43)">Perlengkapan Kucing</option> --}}
-                </Select>
-            </div>
-        </div>
-        <div class="mb-4">
-            <label for="harga" class="form-label">Harga</label>
-            <input type="number" id="harga" name="harga" class="form-control mb-4" placeholder="Masukkan Harga"  required>
-        </div>
- 
-        <div class="mb-3">
-            <label for="image" class="form-label">Gambar Produk</label>
-            <input class="form-control" type="file" id="image" name="image">
-        </div>
-        <div class="mt-lg-5 w-50 m-auto">
-            <input class="btn btn-info btn-block" name="tambah" style="background-color: #A55FA5;font-weight: 600" type="submit" value="Tambah Produk">
-        </div>
-        @if(count($errors))
-        <div class="form-group">
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
-    </form>
+   
 </div>
 @endsection

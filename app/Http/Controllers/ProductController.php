@@ -11,10 +11,10 @@ class ProductController extends Controller
 {
     public function create()
     {
-        $categories = DB::table('categories')->get();
+        //$categories = DB::table('categories')->get();
         return view("products/create", [
             "title" => "Tambah Data",
-            'categories' => $categories
+            //'categories' => $categories
         ]);
     }
     public function store()
@@ -24,19 +24,22 @@ class ProductController extends Controller
         $products->productname = request('productname');
         $products->kategori = request('kategori');
         $products->harga = request('harga');
-        $products->image = request()->file('image')->store('product-images');
+        $products->kuantitas = request('kuantitas');
+        $products->deskripsi = request('deskripsi');
+        $products->image = request()->file('image')->store('product-images'); //product-images akan terbuat sendiri
+        //$products->user_id = auth()->id();
         $products->save();
-        return redirect()->to('/addproduct');
+        return back()->with('success', 'Data berhasil ditambahkan!');
     }
 
     public function formedit($id)
     {
-        $categories = DB::table('categories')->get();
+        //$categories = DB::table('categories')->get();
         $products = Products::findorFail($id);
         return view('products/edit', [
             'title' => 'Edit Produk',
             'products' => $products,
-            'categories' => $categories
+            //'categories' => $categories
         ], compact('products'));
     }
 
@@ -46,12 +49,16 @@ class ProductController extends Controller
             'productname' => 'required',
             'kategori' => 'required',
             'harga' => 'required',
+            'kuantitas' => 'required',
+            'deskripsi' => 'required',
             'image' => 'image|file|max:2024'
         ]);
         $update = [
             'productname' => $request->productname,
             'kategori' => $request->kategori,
-            'harga' => $request->harga
+            'harga' => $request->harga,
+            'kuantitas' => $request->kuantitas,
+            'deskripsi' => $request->deskripsi
         ];
 
         if ($files = $request->file('image')) {
@@ -65,10 +72,11 @@ class ProductController extends Controller
         $update['productname'] = $request->get('productname');
         $update['kategori'] = $request->get('kategori');
         $update['harga'] = $request->get('harga');
+        $update['kuantitas'] = $request->get('kuantitas');
+        $update['deskripsi'] = $request->get('deskripsi');
 
         Products::where('id', $id)->update($update);
         //Categories::find($id)->update($request->all());
         return back()->with('success', 'Data telah diperbaharui!');
-        return redirect('/data-product');
     }
 }

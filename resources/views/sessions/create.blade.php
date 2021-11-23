@@ -17,10 +17,7 @@
           <div class="mb-4">
               <label for="password" class="form-label">Password</label>
               <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-
-              <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-2">Minimal 8 characters
-                  lenght</small>
-              <div class="form-check">
+              <div class="form-check mt-2">
                   <input type="checkbox" id="chk" onclick="Password()">
                   <label for="chk" class="form-check-label">Show Password</label>
                   <script>
